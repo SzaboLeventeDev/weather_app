@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+    margin: 0 auto;
+    background-color: #8595A3;
+    color: #fff;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+.hourlyDataContainer, .dailyDataContainer{
+    margin: auto;
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
