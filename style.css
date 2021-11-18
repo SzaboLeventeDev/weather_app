@@ -1,0 +1,61 @@
+body{
+    text-align: center;
+    margin: 0 auto;
+    background-color: #8595A3;
+    color: #fff;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1{
+    margin: 0;
+}
+hr{
+    width: 100%
+}
+.hourlyDataContainer, .dailyDataContainer{
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.dailyState{
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media screen and (max-width: 900px){
+    .hourlyDataContainer, .dailyDataContainer{
+        /* max-width: 90%; */
+        overflow-x: scroll;
+    }
+    .hourlyState{
+        padding: 10px;
+    }
+    h4{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 630px) {
+    .hourlyDataContainer{
+        width: 630px;
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width: 400px){
+    .dailyDataContainer{
+        flex-direction: column;
+    }
+    .dailyState{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        overflow-y: scroll;
+    }
+}
