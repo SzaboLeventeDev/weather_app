@@ -18,7 +18,7 @@
     </header>
     <main>
         <div class="currentDataContainer">
-            <h2>Temperature</h2>
+            <h2 id="actualTemperature">Temperature</h2>
             <h3 id="city">City</h3>
         </div>
         <hr>
@@ -128,6 +128,35 @@
                 <i>icon</i>
                 <h4>Day</h4>
             </div>
+            
+            </div>
+            <div class="actualDayInfo">
+                <div class="uv small">
+                    <h4>UV Intensity</h4>
+                    <h5 id="uvValue"></h4>
+                </div>
+                <div class="wind small">
+                    <h4>Wind</h4>
+                    <div>
+                        <h5>Speed: </h5>
+                        <h5 id="windSpeed"></h5>
+                    </div>
+                    <div>
+                        <h5>Wind direction</h5>
+                        <h5 id="windDirection"></h5>
+                    </div>
+                </div>
+                <div class="sun small">
+                    <h4>Sun</h4>
+                    <div>
+                        <h5>Sunrise: </h5>
+                        <h5  id="sunRiseTime"></h5>
+                    </div>
+                    <div>
+                        <h5>Sunset: </h5>
+                        <h5 id="sunSetTime"></h5>
+                    </div>
+                </div>
         </div>
     </main>
     <script src="script.js"></script>
