@@ -43,6 +43,7 @@ function weatherOfBudapest(){
 function actualDayInfo(actual){
     var uvValue = document.querySelector("#uvValue");
     uvValue.innerHTML = actual.data[0].uv;
-} */
+}*/
+
 
 /* weatherOfBudapest(); */
