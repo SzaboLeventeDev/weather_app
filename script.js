@@ -39,4 +39,4 @@ xhr.setRequestHeader("x-rapidapi-key", "2dfa2f19c3mshef9b7bf2be454b1p160f2cjsnfb
 xhr.send(data);
 }
 
-weatherOfBudapest();
+//weatherOfBudapest();

@@ -15,3 +15,33 @@ header{
     display: flex;
     justify-content: space-between;
 }
+.dailyState{
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media screen and (max-width: 900px){
+    .hourlyDataContainer, .dailyDataContainer{
+        max-width: 90%;
+    }
+    h4{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 630px) {
+    .hourlyDataContainer{
+        width: 630px;
+        overflow-x: scroll;
+    }
+}
+@media screen and (max-width: 400px){
+    .dailyDataContainer{
+        flex-direction: column;
+    }
+    .dailyState{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
