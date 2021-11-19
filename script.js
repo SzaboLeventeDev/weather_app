@@ -46,7 +46,7 @@ let daysOfWeek = {
     "Sunday": []
 };
 
-actualWeather();
+/* actualWeather(); */
 
 function fiveDaysForecast(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=47.5&lon=19", {
