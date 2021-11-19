@@ -6,7 +6,7 @@ var windDirection = document.querySelector("#windDirection")
 var sunRiseTime = document.querySelector("#sunRiseTime");
 var sunSetTime = document.querySelector("#sunSetTime");
 
-function weatherOfBudapest(){
+function actualWeather(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=19&lat=47.5", {
 	"method": "GET",
 	"headers": {
@@ -36,6 +36,59 @@ function weatherOfBudapest(){
 	console.error(err);
 });
 }
+let daysOfWeek = {
+    "Monday": [], 
+    "Tuesday" : [],
+    "Wednesday": [],
+    "Thursday": [],
+    "Friday": [],
+    "Saturday": [],
+    "Sunday": []
+};
+
+actualWeather();
+
+function fiveDaysForecast(){
+    fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=47.5&lon=19", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            "x-rapidapi-key": "2dfa2f19c3mshef9b7bf2be454b1p160f2cjsnfbbbd48476e0"
+        }
+    })
+    .then(response => {
+        console.log(response);
+        array.forEach(days => {
+            
+        });
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
+
+
+
+
+var menuBtn = document.getElementsById("menuButton");
+menuBtn.addEventListener("click", openSetting);
+
+function openSetting(m){
+    var settingDiv = document.querySelector("settings");
+    console.log("lefut");
+    let menu;
+
+    if (m.target.classList.contains("menuButton")) {
+        menu = m.target.parentElement
+    }
+    else{
+        menu = m.target.parentElement.parentElement;
+    }
+    menu.classList.toggle("question")
+
+    /* settingDiv.toggle(); */
+}
 //Nem adja át az értékeket.
 /* function hourly (){
 
@@ -45,5 +98,7 @@ function actualDayInfo(actual){
     uvValue.innerHTML = actual.data[0].uv;
 }*/
 
+/* function menuClick() 
+ */    
 
-/* weatherOfBudapest(); */
+
