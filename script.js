@@ -21,7 +21,6 @@ function actualWeather(){
 .then(function(actualData){
     var appData = actualData.data[0];
     console.log(actualData);
-    console.log(actualData.count)
     console.log(actualData.data[0].city_name)
     actualCityHeader.innerHTML = actualData.data[0].city_name;
     actualTemperature.innerHTML = actualData.data[0].temp + " Celsius";
@@ -36,15 +35,14 @@ function actualWeather(){
 	console.error(err);
 });
 }
-let daysOfWeek = {
-    "Monday": [], 
-    "Tuesday" : [],
-    "Wednesday": [],
-    "Thursday": [],
-    "Friday": [],
-    "Saturday": [],
-    "Sunday": []
-};
+/* let fiveDay = {
+    "first": [day, min, max], 
+    "second" : [day, min, max],
+    "third": [day, min, max],
+    "fourth": [day, min, max],
+    "fifth": [day, min, max],
+ 
+}; */
 
 /* actualWeather(); */
 
@@ -58,36 +56,27 @@ function fiveDaysForecast(){
     })
     .then(response => {
         console.log(response);
-        array.forEach(days => {
-            
-        });
+        return response.json();
+        
+    })
+    .then(function(fiveDaysForecast){
+        console.log(fiveDaysForecast)
     })
     .catch(err => {
         console.error(err);
     });
 }
 
+/* fiveDaysForecast(); */
 
-
-
-
-var menuBtn = document.getElementsById("menuButton");
+var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
-
-function openSetting(m){
-    var settingDiv = document.querySelector("settings");
-    console.log("lefut");
-    let menu;
-
-    if (m.target.classList.contains("menuButton")) {
-        menu = m.target.parentElement
-    }
-    else{
-        menu = m.target.parentElement.parentElement;
-    }
-    menu.classList.toggle("question")
-
-    /* settingDiv.toggle(); */
+function openSetting(){
+    console.log("katt");
+   var settingDiv = document.getElementById("settingsContainer");
+    /* var mainBlur = document.getElementsByTagName(main); */
+    settingDiv.classList.toggle("editSettings");
+    /* mainBlur.classList.toggle("blur") */
 }
 //Nem adja át az értékeket.
 /* function hourly (){

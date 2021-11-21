@@ -13,6 +13,9 @@ header{
 h1{
     margin: 0;
 }
+.blur{
+    opacity: 0.5;
+}
 
 /* Menu and setting for users */
 .menu{
@@ -30,6 +33,11 @@ h1{
     flex-direction: column;
     border: 2px solid #fff;
     border-radius: 20px;
+    visibility: hidden;
+}
+.editSettings{
+    visibility: visible;
+
 }
 #placeOfWeatherForecast{
     width: 50%;
