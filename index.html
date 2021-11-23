@@ -12,9 +12,9 @@
 </head>
 <body>
     <header>
-        <p>Logo</p>
+        <!-- <p>Logo</p> -->
         <h1>weather app</h1>
-        <button>Search</button>
+        <button id="menuButton" class="fa fa-bars fa-2x menu"></button>
     </header>
     <main>
         <div class="currentDataContainer">
@@ -137,28 +137,47 @@
                 </div>
                 <div class="wind small">
                     <h4>Wind</h4>
-                    <div>
+                    <div class="actualDayInfoData">
                         <h5>Speed: </h5>
                         <h5 id="windSpeed"></h5>
                     </div>
-                    <div>
-                        <h5>Wind direction</h5>
+                    <div class="actualDayInfoData">
+                        <h5>Wind direction:</h5>
                         <h5 id="windDirection"></h5>
                     </div>
                 </div>
                 <div class="sun small">
                     <h4>Sun</h4>
-                    <div>
+                    <div class="actualDayInfoData">
                         <h5>Sunrise: </h5>
                         <h5  id="sunRiseTime"></h5>
                     </div>
-                    <div>
+                    <div class="actualDayInfoData">
                         <h5>Sunset: </h5>
                         <h5 id="sunSetTime"></h5>
                     </div>
                 </div>
         </div>
     </main>
+    <div id="settingsContainer" class="settings">
+        <h4>User settings</h4>
+        <input type="text" name="city" id="placeOfWeatherForecast">
+        <div class="unit">
+            <label for="imperial">Imperial</label>
+            <input type="radio" name="imperial" id="imperialUnit" placeholder="Type the selected area/city">
+            <label for="metric">Metric</label>
+            <input type="radio" name="metric" id="metricUnit">
+        </div>
+        <div class="buttons">
+            <button>
+                Cancel
+            </button>
+            <button>
+                Save
+            </button>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/ff78f6a7ab.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

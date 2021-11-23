@@ -13,9 +13,45 @@ header{
 h1{
     margin: 0;
 }
+.blur{
+    opacity: 0.5;
+}
+
+/* Menu and setting for users */
+.menu{
+    border: 0;
+    background-color: #8595A3;
+    color: #fff;
+}
+.settings{
+    margin: 0 auto;
+    width: 500px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    visibility: hidden;
+}
+.editSettings{
+    visibility: visible;
+
+}
+#placeOfWeatherForecast{
+    width: 50%;
+    margin: 0 auto;
+}
+.unit{
+    display: flex;
+    justify-content: center;
+}
 hr{
     width: 100%
 }
+
+/* Weather containers */
 .hourlyDataContainer, .dailyDataContainer{
     margin: 0 auto;
     padding: 0 20px;
@@ -40,8 +76,13 @@ hr{
 .actualDayInfo .small{
     border: 1px solid #fff;
     border-radius: 20px;
+    box-shadow: 3px 3px rgb(34, 121, 133);
     width: 150px;
-    height: 150px;
+    height: 200px;
+}
+.actualDayInfoData{
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 900px){
@@ -71,5 +112,16 @@ hr{
         justify-content: space-between;
         align-items: center;
         overflow-y: scroll;
+    }
+    .settings{
+        width: 80%;
+    }
+    .actualDayInfo{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .actualDayInfo .small{
+        width: 100%;
+        margin: 10px 0;
     }
 }
