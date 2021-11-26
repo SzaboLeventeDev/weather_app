@@ -5,6 +5,7 @@ var windSpeed = document.querySelector("#windSpeed");
 var windDirection = document.querySelector("#windDirection")
 var sunRiseTime = document.querySelector("#sunRiseTime");
 var sunSetTime = document.querySelector("#sunSetTime");
+var firstObjectOfNextDayIndex;
 
 function actualWeather(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=19&lat=47.5", {
@@ -35,14 +36,14 @@ function actualWeather(){
 	console.error(err);
 });
 }
-/* let fiveDay = {
-    "first": [day, min, max], 
-    "second" : [day, min, max],
-    "third": [day, min, max],
-    "fourth": [day, min, max],
-    "fifth": [day, min, max],
+var fiveDay = {
+    "first": [day = "", min = "", max = ""], 
+    "second" : [day = "", min = "", max = ""],
+    "third": [day = "", min = "", max = ""],
+    "fourth": [day = "", min = "", max = ""],
+    "fifth": [day = "", min = "", max = ""],
  
-}; */
+};
 
 /* actualWeather(); */
 
@@ -61,10 +62,43 @@ function fiveDaysForecast(){
     })
     .then(function(fiveDaysForecast){
         console.log(fiveDaysForecast)
+        dataTimeCutting(fiveDaysForecast);
+        var data = firstObjectOfNextDayIndex;
+        
+        for (let index = 0; index < fiveDay.items.count-1; index++) {
+            for (let i = data; i < data+8; i++){
+                fiveDay[index].day = fiveDaysForecast[i].timestamp_local;
+                var dailyMinTemp;
+                var dailyMaxTemp;
+
+                if (dailyMinTemp < fiveDaysForecast[i].temp | dailyMaxTemp < fiveDaysForecast[i].temp) {
+                        dailyMaxTemp = fiveDaysForecast[i].temp
+                }
+                else if(dailyMinTemp > fiveDaysForecast[i].temp | dailyMaxTemp < fiveDaysForecast[i].temp) {
+                        dailyMinTemp = fiveDaysForecast[i].temp
+                }    
+            }
+                fiveDay[index].min = dailyMinTemp;
+                fiveDay[index].max = dailyMaxTemp; 
+                data += 8;
+        }
+             
     })
     .catch(err => {
         console.error(err);
     });
+}
+function dataTimeCutting(fiveDayData){
+    
+    for (let i = 0; i < 7; i++) {
+        var actualTime = fiveDayData.data[i].timestamp_local.substr(11);
+        console.log(actualTime);
+        if (actualTime ="00:00:00") {
+            firstObjectOfNextDayIndex = i;
+            console.log(firstObjectOfNextDayIndex);
+        }
+        break
+    }
 }
 
 /* fiveDaysForecast(); */
