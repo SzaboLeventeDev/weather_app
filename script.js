@@ -36,13 +36,13 @@ function actualWeather(){
 	console.error(err);
 });
 }
+var day = {}
 var fiveDay = {
-    "first": [day = "", min = "", max = ""], 
+    "first": [day = undefined, min = undefined, max = undefined], 
     "second" : [day = "", min = "", max = ""],
     "third": [day = "", min = "", max = ""],
     "fourth": [day = "", min = "", max = ""],
-    "fifth": [day = "", min = "", max = ""],
- 
+    "fifth": [day = "", min = "", max = ""] 
 };
 
 /* actualWeather(); */
@@ -61,13 +61,14 @@ function fiveDaysForecast(){
         
     })
     .then(function(fiveDaysForecast){
+        var forecastData = fiveDaysForecast.data;
         console.log(fiveDaysForecast)
         dataTimeCutting(fiveDaysForecast);
         var data = firstObjectOfNextDayIndex;
         
-        for (let index = 0; index < fiveDay.items.count-1; index++) {
+        for (var index = 0; index < 4; index++) {
             for (let i = data; i < data+8; i++){
-                fiveDay[index].day = fiveDaysForecast[i].timestamp_local;
+                fiveDay[index].day = forecastData[i].timestamp_local;
                 var dailyMinTemp;
                 var dailyMaxTemp;
 
@@ -90,12 +91,12 @@ function fiveDaysForecast(){
 }
 function dataTimeCutting(fiveDayData){
     
-    for (let i = 0; i < 7; i++) {
+    for (var i = 0; i < 7; i++) {
         var actualTime = fiveDayData.data[i].timestamp_local.substr(11);
         console.log(actualTime);
         if (actualTime ="00:00:00") {
             firstObjectOfNextDayIndex = i;
-            console.log(firstObjectOfNextDayIndex);
+            console.log("5 napos előrejelzés első eleme: " + firstObjectOfNextDayIndex);
         }
         break
     }
