@@ -36,14 +36,12 @@ function actualWeather(){
 	console.error(err);
 });
 }
-var day = {}
-var fiveDay = {
-    "first": [day = undefined, min = undefined, max = undefined], 
-    "second" : [day = "", min = "", max = ""],
-    "third": [day = "", min = "", max = ""],
-    "fourth": [day = "", min = "", max = ""],
-    "fifth": [day = "", min = "", max = ""] 
-};
+var day = {
+    date: "",
+    min: "",
+    max: ""
+}
+var fiveDay = [];
 
 /* actualWeather(); */
 
@@ -63,25 +61,36 @@ function fiveDaysForecast(){
     .then(function(fiveDaysForecast){
         var forecastData = fiveDaysForecast.data;
         console.log(fiveDaysForecast)
+        console.log(forecastData[0].temp)
         dataTimeCutting(fiveDaysForecast);
         var data = firstObjectOfNextDayIndex;
-        
+        var dailyMinTemp = "";
+        var dailyMaxTemp = "";
+
         for (var index = 0; index < 4; index++) {
             for (let i = data; i < data+8; i++){
-                fiveDay[index].day = forecastData[i].timestamp_local;
-                var dailyMinTemp;
-                var dailyMaxTemp;
-
-                if (dailyMinTemp < fiveDaysForecast[i].temp | dailyMaxTemp < fiveDaysForecast[i].temp) {
-                        dailyMaxTemp = fiveDaysForecast[i].temp
+                day.date = forecastData[i].timestamp_local;
+               
+                console.log("előző min érték az " + index + ". napon: " + dailyMinTemp)
+                console.log("előző max érték az " + index + ". napon: " + dailyMaxTemp)
+                if (dailyMinTemp < forecastData[i].temp | dailyMaxTemp < forecastData[i].temp) {
+                        dailyMaxTemp = forecastData[i].temp
+                        console.log("dailyMaxTemp: ", dailyMaxTemp, "   tömb aktuális min értéke: ", dailyMinTemp)
                 }
-                else if(dailyMinTemp > fiveDaysForecast[i].temp | dailyMaxTemp < fiveDaysForecast[i].temp) {
-                        dailyMinTemp = fiveDaysForecast[i].temp
+                if(dailyMinTemp > forecastData[i].temp | dailyMaxTemp > forecastData[i].temp) {
+                        dailyMinTemp = forecastData[i].temp
+                        console.log("dailyMinTemp: ", dailyMinTemp, "   tömb aktuális min értéke: ", forecastData[i].temp)
+                        
                 }    
             }
-                fiveDay[index].min = dailyMinTemp;
-                fiveDay[index].max = dailyMaxTemp; 
-                data += 8;
+                day.min == dailyMinTemp;
+                day.max = dailyMaxTemp;
+                console.log(index + "idő: " + day.date)
+                console.log(index + ". nap min: " + day.min); 
+                console.log(index + ". nap max: "+day.max);
+                fiveDay.push(day)
+
+                data = data + 8;
         }
              
     })
@@ -93,16 +102,17 @@ function dataTimeCutting(fiveDayData){
     
     for (var i = 0; i < 7; i++) {
         var actualTime = fiveDayData.data[i].timestamp_local.substr(11);
-        console.log(actualTime);
-        if (actualTime ="00:00:00") {
+        console.log(i + ". elem értéke: "+ actualTime);
+        if (actualTime == "00:00:00" | actualTime == "01:00:00" | actualTime == "02:00:00") {
             firstObjectOfNextDayIndex = i;
-            console.log("5 napos előrejelzés első eleme: " + firstObjectOfNextDayIndex);
+            console.log("5 napos előrejelzés első eleme: " + firstObjectOfNextDayIndex + "az " + i + ". körben");
+            break
         }
-        break
+        
     }
 }
 
-/* fiveDaysForecast(); */
+fiveDaysForecast();
 
 var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
