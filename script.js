@@ -64,35 +64,41 @@ function fiveDaysForecast(){
         console.log(forecastData[0].temp)
         dataTimeCutting(fiveDaysForecast);
         var data = firstObjectOfNextDayIndex;
-        var dailyMinTemp = "";
-        var dailyMaxTemp = "";
+        
 
+        //loop for pushing forecast data to fiveDay[]
         for (var index = 0; index < 4; index++) {
+            
+            console.log(index + "idő: " + day.date)
+            var dailyMinTemp = "";
+            var dailyMaxTemp = "";
+            //Loop for iterate daily data to day{}
             for (let i = data; i < data+8; i++){
-                day.date = forecastData[i].timestamp_local;
-               
+                day.date = forecastData[i].timestamp_local.substr(0,10);
+               console.log("következő nap első elemének indexe: " + data)
                 console.log("előző min érték az " + index + ". napon: " + dailyMinTemp)
                 console.log("előző max érték az " + index + ". napon: " + dailyMaxTemp)
                 if (dailyMinTemp < forecastData[i].temp | dailyMaxTemp < forecastData[i].temp) {
                         dailyMaxTemp = forecastData[i].temp
                         console.log("dailyMaxTemp: ", dailyMaxTemp, "   tömb aktuális min értéke: ", dailyMinTemp)
-                }
-                if(dailyMinTemp > forecastData[i].temp | dailyMaxTemp > forecastData[i].temp) {
+                }else{console.log("Nem történt változás a max értékben")}
+                if(dailyMinTemp > forecastData[i].temp | dailyMinTemp == "" | dailyMaxTemp > forecastData[i].temp) {
                         dailyMinTemp = forecastData[i].temp
-                        console.log("dailyMinTemp: ", dailyMinTemp, "   tömb aktuális min értéke: ", forecastData[i].temp)
+                        console.log("dailyMinTemp: ", dailyMinTemp, "   tömb aktuális max értéke: ", dailyMaxTemp)
                         
-                }    
+                }else{console.log("Nem történt változás a min értékben")}  
             }
-                day.min == dailyMinTemp;
-                day.max = dailyMaxTemp;
-                console.log(index + "idő: " + day.date)
-                console.log(index + ". nap min: " + day.min); 
-                console.log(index + ". nap max: "+day.max);
-                fiveDay.push(day)
-
-                data = data + 8;
+            day.min = dailyMinTemp;
+            day.max = dailyMaxTemp;
+            console.log(index + ". nap min: " + day.min); 
+            console.log(index + ". nap max: "+day.max);
+            console.log(day);
+            fiveDay.push(day);
+            console.log(fiveDay);
+            data = data + 8; 
+            console.log("újabb nap első elemének indexe: " + data);   
         }
-             
+        fiveDayTilesData();    
     })
     .catch(err => {
         console.error(err);
@@ -112,7 +118,30 @@ function dataTimeCutting(fiveDayData){
     }
 }
 
-fiveDaysForecast();
+function fiveDayTilesData(){
+    var container = document.getElementsByClassName("dailyDataContainer");
+    /* var numberOfDivs = $(".dailyDataContainer").size(); */
+    /* var divs = document.getElementsByClassName("dailyState"); */  //Hibás a sor. Nem funkció
+    var dailyMax = document.getElementsByClassName("maxValue");
+    var dailyMin = document.getElementsByClassName("minValue");
+    for (var index = 0; index < 5; index++) {
+        $(`.dailyDataContainer.dailyState${index}.maxValue`).text() = fiveDay[index].max;
+        
+    }
+
+/* 
+    fiveDay.forEach(fiveDay => {
+        //needs to count the divs in dailyDataContainer
+        
+        for (let index = 0; index < numberOfDivs-1; index++) {
+            const element = array[index];
+            
+        }
+        dailyMax.innerHTML = fiveDay.max;
+    }); */
+}
+
+/* fiveDaysForecast(); */
 
 var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
@@ -136,3 +165,17 @@ function actualDayInfo(actual){
  */    
 
 
+
+
+
+/* Teszt rész */
+
+var auto = {
+    marka: "",
+    model: "",
+    evjarat: ""
+};
+var tesztTomb = [
+    { marka: "BMW", model: "X5", evjarat:"2021"},
+    {marka: "Mazda", model: "6", evjarat: "2012"}
+];
