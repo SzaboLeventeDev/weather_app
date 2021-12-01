@@ -87,76 +87,63 @@
         <hr>
         <div class="dailyDataContainer">
             <div class="dailyState">
-                <h4 class="maxValue">20</h4>
-                <h4 class="minValue">5</h4>
+                <h4 id="firstDayMaxValue" class="maxValue">20</h4>
+                <h4  id="firstDayMinValue"class="minValue">5</h4>
                 <i>icon</i>
-                <h4>Day</h4>
+                <h4 id="firstDay">Day</h4>
             </div>
             <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
+                <h4  id="secondDayMaxValue" class="maxValue">Temperature</h4>
+                <h4  id="secondDayMinValue"class="minValue">Temperature</h4>
                 <i>icon</i>
-                <h4>Day</h4>
+                <h4 id="secondDay">Day</h4>
             </div>
             <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
+                <h4 id="thirdDayMaxValue" class="maxValue">Temperature</h4>
+                <h4 id="thirdDayMinValue" class="minValue">Temperature</h4>
                 <i>icon</i>
-                <h4>Day</h4>
+                <h4 id="thirdDay">Day</h4>
             </div>
             <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
+                <h4  id="fourthDayMaxValue" class="maxValue">Temperature</h4>
+                <h4 id="fourthDayMinValue" class="minValue">Temperature</h4>
                 <i>icon</i>
-                <h4>Day</h4>
+                <h4 id="fourthDay">Day</h4>
             </div>
             <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
+                <h4 id="fifthDayMaxValue" class="maxValue">Temperature</h4>
+                <h4 id="fifthDayMinValue" class="minValue">Temperature</h4>
                 <i>icon</i>
-                <h4>Day</h4>
+                <h4 id="fifthDay">Day</h4>
+            </div>            
+        </div>
+        <div class="actualDayInfo">
+            <div class="uv small">
+                <h4>UV Intensity</h4>
+                <h5 id="uvValue"></h4>
             </div>
-            <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
-                <i>icon</i>
-                <h4>Day</h4>
-            </div>
-            <div class="dailyState">
-                <h4 class="maxValue">Temperature</h4>
-                <h4 class="minValue">Temperature</h4>
-                <i>icon</i>
-                <h4>Day</h4>
-            </div>
-            
-            </div>
-            <div class="actualDayInfo">
-                <div class="uv small">
-                    <h4>UV Intensity</h4>
-                    <h5 id="uvValue"></h4>
+            <div class="wind small">
+                <h4>Wind</h4>
+                <div class="actualDayInfoData">
+                    <h5>Speed: </h5>
+                    <h5 id="windSpeed"></h5>
                 </div>
-                <div class="wind small">
-                    <h4>Wind</h4>
-                    <div class="actualDayInfoData">
-                        <h5>Speed: </h5>
-                        <h5 id="windSpeed"></h5>
-                    </div>
-                    <div class="actualDayInfoData">
-                        <h5>Wind direction:</h5>
-                        <h5 id="windDirection"></h5>
-                    </div>
+                <div class="actualDayInfoData">
+                    <h5>Wind direction:</h5>
+                    <h5 id="windDirection"></h5>
                 </div>
-                <div class="sun small">
-                    <h4>Sun</h4>
-                    <div class="actualDayInfoData">
-                        <h5>Sunrise: </h5>
-                        <h5  id="sunRiseTime"></h5>
-                    </div>
-                    <div class="actualDayInfoData">
-                        <h5>Sunset: </h5>
-                        <h5 id="sunSetTime"></h5>
-                    </div>
+            </div>
+            <div class="sun small">
+                <h4>Sun</h4>
+                <div class="actualDayInfoData">
+                    <h5>Sunrise: </h5>
+                    <h5  id="sunRiseTime"></h5>
                 </div>
+                <div class="actualDayInfoData">
+                    <h5>Sunset: </h5>
+                    <h5 id="sunSetTime"></h5>
+                </div>
+            </div>
         </div>
     </main>
     <div id="settingsContainer" class="settings">
@@ -177,6 +164,7 @@
             </button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://use.fontawesome.com/ff78f6a7ab.js"></script>
     <script src="script.js"></script>
 </body>
