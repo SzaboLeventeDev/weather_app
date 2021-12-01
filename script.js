@@ -43,7 +43,7 @@ var day = {
 }
 var fiveDay = [];
 
-/* actualWeather(); */
+actualWeather();
 
 function fiveDaysForecast(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=47.5&lon=19", {
@@ -119,29 +119,36 @@ function dataTimeCutting(fiveDayData){
 }
 
 function fiveDayTilesData(){
-    var container = document.getElementsByClassName("dailyDataContainer");
-    /* var numberOfDivs = $(".dailyDataContainer").size(); */
-    /* var divs = document.getElementsByClassName("dailyState"); */  //Hibás a sor. Nem funkció
-    var dailyMax = document.getElementsByClassName("maxValue");
-    var dailyMin = document.getElementsByClassName("minValue");
-    for (var index = 0; index < 5; index++) {
-        $(`.dailyDataContainer.dailyState${index}.maxValue`).text() = fiveDay[index].max;
-        
-    }
+   
 
-/* 
-    fiveDay.forEach(fiveDay => {
-        //needs to count the divs in dailyDataContainer
-        
-        for (let index = 0; index < numberOfDivs-1; index++) {
-            const element = array[index];
-            
-        }
-        dailyMax.innerHTML = fiveDay.max;
-    }); */
+
+//Adatok betöltése ID-k használatával.
+    //first day
+    document.getElementById("firstDayMaxValue").innerText = fiveDay[0].max;
+    document.getElementById("firstDayMinValue").innerText = fiveDay[0].min;
+    document.getElementById("firstDay").innerText = fiveDay[0].date;
+
+    //second day
+    document.getElementById("secondDayMaxValue").innerText = fiveDay[1].max;
+    document.getElementById("secondDayMinValue").innerText = fiveDay[1].min;
+    document.getElementById("secondDay").innerText = fiveDay[1].date;
+
+    //third day
+    document.getElementById("thirdDayMaxValue").innerText = fiveDay[2].max;
+    document.getElementById("thirdDayMinValue").innerText = fiveDay[2].min;
+    document.getElementById("thirdDay").innerText = fiveDay[2].date;
+
+    //fourth day
+    document.getElementById("fourthDayMaxValue").innerText = fiveDay[3].max;
+    document.getElementById("fourthDayMinValue").innerText = fiveDay[3].min;
+    document.getElementById("fourthDay").innerText = fiveDay[3].date;
+    //fifth day
+    document.getElementById("fifthDayMaxValue").innerText = fiveDay[4].max;
+    document.getElementById("fifthDayMinValue").innerText = fiveDay[4].min;
+    document.getElementById("fifthDay").innerText = fiveDay[4].date;
 }
 
-/* fiveDaysForecast(); */
+fiveDaysForecast();
 
 var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
@@ -163,19 +170,3 @@ function actualDayInfo(actual){
 
 /* function menuClick() 
  */    
-
-
-
-
-
-/* Teszt rész */
-
-var auto = {
-    marka: "",
-    model: "",
-    evjarat: ""
-};
-var tesztTomb = [
-    { marka: "BMW", model: "X5", evjarat:"2021"},
-    {marka: "Mazda", model: "6", evjarat: "2012"}
-];
