@@ -30,6 +30,8 @@ function actualWeather(){
     windDirection.innerHTML = actualData.data[0].wind_cdir_full;
     sunRiseTime.innerHTML = actualData.data[0].sunrise;
     sunSetTime.innerHTML = actualData.data[0].sunset;
+    document.getElementById("currentWeatherIcon").src = "icons/" + appData.weather.icon + ".png";
+    document.getElementById("currentWeatherIcon").alt = appData.weather.description;
 
 })
 .catch(err => {
@@ -39,11 +41,13 @@ function actualWeather(){
 var day = {
     date: "",
     min: "",
-    max: ""
+    max: "",
+    icon: "",
+    description: ""
 }
 var fiveDay = [];
 
-actualWeather();
+/* actualWeather(); */
 
 function fiveDaysForecast(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=47.5&lon=19", {
@@ -76,6 +80,8 @@ function fiveDaysForecast(){
             for (let i = data; i < data+8; i++){
                 day.date = forecastData[i].timestamp_local.substr(0,10);
                console.log("következő nap első elemének indexe: " + data)
+               day.icon = forecastData[i].weather.icon;
+               day.description = forecastData[i].weather.description;
                 console.log("előző min érték az " + index + ". napon: " + dailyMinTemp)
                 console.log("előző max érték az " + index + ". napon: " + dailyMaxTemp)
                 if (dailyMinTemp < forecastData[i].temp | dailyMaxTemp < forecastData[i].temp) {
@@ -127,28 +133,39 @@ function fiveDayTilesData(){
     document.getElementById("firstDayMaxValue").innerText = fiveDay[0].max;
     document.getElementById("firstDayMinValue").innerText = fiveDay[0].min;
     document.getElementById("firstDay").innerText = fiveDay[0].date;
+    document.getElementById("firstDayIcon").src = "icons/" + fiveDay[0].icon +".png";
+    document.getElementById("firstDayIcon").alt = fiveDay[0].description;
 
     //second day
     document.getElementById("secondDayMaxValue").innerText = fiveDay[1].max;
     document.getElementById("secondDayMinValue").innerText = fiveDay[1].min;
     document.getElementById("secondDay").innerText = fiveDay[1].date;
+    document.getElementById("secondDayIcon").innerHTML = fiveDay[1].icon;
+    document.getElementById("secondDayIcon").src = "icons/" + fiveDay[0].icon +".png";
+    document.getElementById("secondDayIcon").alt = fiveDay[0].description;
 
     //third day
     document.getElementById("thirdDayMaxValue").innerText = fiveDay[2].max;
     document.getElementById("thirdDayMinValue").innerText = fiveDay[2].min;
     document.getElementById("thirdDay").innerText = fiveDay[2].date;
+    document.getElementById("thirdDayIcon").src = "icons/" + fiveDay[0].icon +".png";
+    document.getElementById("thirdDayIcon").alt = fiveDay[0].description;
 
     //fourth day
     document.getElementById("fourthDayMaxValue").innerText = fiveDay[3].max;
     document.getElementById("fourthDayMinValue").innerText = fiveDay[3].min;
     document.getElementById("fourthDay").innerText = fiveDay[3].date;
+    document.getElementById("fourthDayIcon").src = "icons/" + fiveDay[0].icon +".png";
+    document.getElementById("fourthDayIcon").alt = fiveDay[0].description;
     //fifth day
     document.getElementById("fifthDayMaxValue").innerText = fiveDay[4].max;
     document.getElementById("fifthDayMinValue").innerText = fiveDay[4].min;
     document.getElementById("fifthDay").innerText = fiveDay[4].date;
+    document.getElementById("fifthDayIcon").src = "icons/" + fiveDay[0].icon +".png";
+    document.getElementById("fifthDayIcon").alt = fiveDay[0].description;
 }
 
-fiveDaysForecast();
+/* fiveDaysForecast(); */
 
 var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
