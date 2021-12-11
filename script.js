@@ -191,9 +191,9 @@ function fiveMinutes(data){
 function oneHourTilesData(){
 
 }
-actualWeather();
+/* actualWeather();
 fiveDaysForecast();
-oneHourForecast();
+oneHourForecast(); */
 
 //-----------------------------------------Menu for settings-----------------------------------------------------------
 
