@@ -148,7 +148,9 @@ function fiveDayTilesData(){
 //-----------------------------------------One hour forecast-----------------------------------------------------------
 var temperatureData = {
     temperature: "",
-    time: ""
+    time: "",
+    icon:"",
+    description:""
 }
 
 var oneHourTemperatures = [];
@@ -181,7 +183,9 @@ function fiveMinutes(data){
         if (index % 5 == 0 && index != 0) {
             console.log(index + "minLaterTime");
             document.getElementById(index + "minLaterTemperature").innerText = data[index].temp;
-            document.getElementById(index + "minLaterTime").innerText = data[index].timestamp_local.substr(11);
+            document.getElementById(index + "minLaterTime").innerText = data[index].timestamp_local.substr(11,14);
+            /* document.getElementById(index + "minLaterIcon").src = "icons/" + data[index].weather.icon + ".png";
+            document.getElementById(index + "minLaterIcon").alt = data[index].weather.description; */
         }
         oneHourTemperatures.push(temperatureData);
     }
@@ -191,9 +195,9 @@ function fiveMinutes(data){
 function oneHourTilesData(){
 
 }
-/* actualWeather();
-fiveDaysForecast();
-oneHourForecast(); */
+/* actualWeather(); */
+/* fiveDaysForecast(); */
+oneHourForecast();
 
 //-----------------------------------------Menu for settings-----------------------------------------------------------
 
