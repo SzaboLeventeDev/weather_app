@@ -197,7 +197,7 @@ function oneHourTilesData(){
 }
 /* actualWeather(); */
 /* fiveDaysForecast(); */
-oneHourForecast();
+/* oneHourForecast(); */
 
 //-----------------------------------------Menu for settings-----------------------------------------------------------
 
