@@ -38,7 +38,7 @@ function actualWeather(){
 	console.error(err);
 });
 }
-/* actualWeather(); */
+
 /* ------------------------------------------Five days forecast ----------------------------------------------- */
 var day = {
     date: "",
@@ -164,7 +164,7 @@ function fiveDayTilesData(){
     document.getElementById("fifthDayIcon").alt = fiveDay[0].description;
 }
 
-/* fiveDaysForecast(); */
+
 
 /* ---------------------------------One hour forecast ------------------------------------------- */
 
@@ -236,3 +236,15 @@ function actualDayInfo(actual){
 
 /* function menuClick() 
  */    
+
+/* ----------------------------Invite functions-------------------------------------------------- */
+
+/* oneHourForecast(); */
+/* fiveDaysForecast(); */
+/* actualWeather(); */
+
+
+
+oneHourForecast();
+ fiveDaysForecast();
+actualWeather();
