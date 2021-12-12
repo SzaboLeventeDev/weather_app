@@ -6,7 +6,7 @@ var windDirection = document.querySelector("#windDirection")
 var sunRiseTime = document.querySelector("#sunRiseTime");
 var sunSetTime = document.querySelector("#sunSetTime");
 var firstObjectOfNextDayIndex;
-
+/* -------------------------------------Actual weather ----------------------------------------------------- */
 function actualWeather(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=19&lat=47.5", {
 	"method": "GET",
@@ -38,6 +38,8 @@ function actualWeather(){
 	console.error(err);
 });
 }
+/* actualWeather(); */
+/* ------------------------------------------Five days forecast ----------------------------------------------- */
 var day = {
     date: "",
     min: "",
@@ -47,7 +49,7 @@ var day = {
 }
 var fiveDay = [];
 
-/* actualWeather(); */
+
 
 function fiveDaysForecast(){
     fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=47.5&lon=19", {
@@ -125,9 +127,6 @@ function dataTimeCutting(fiveDayData){
 }
 
 function fiveDayTilesData(){
-   
-
-
 //Adatok betöltése ID-k használatával.
     //first day
     document.getElementById("firstDayMaxValue").innerText = fiveDay[0].max;
@@ -167,6 +166,56 @@ function fiveDayTilesData(){
 
 /* fiveDaysForecast(); */
 
+/* ---------------------------------One hour forecast ------------------------------------------- */
+
+var temperatureData = {
+    temperature: "",
+    time: "",
+    icon: "",
+    description: ""
+};
+
+var oneHourTemperatures = [];
+
+function oneHourForecast(){
+    fetch("https://weatherbit-v1-mashape.p.rapidapi.com/forecast/minutely?lat=35.5&lon=-78.5", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "weatherbit-v1-mashape.p.rapidapi.com",
+            "x-rapidapi-key": "2dfa2f19c3mshef9b7bf2be454b1p160f2cjsnfbbbd48476e0"
+	}
+    })
+    .then(response => {
+        console.log(response);
+        return response.json();
+    })
+    .then(hourlyData => {
+        var hourlyForecastData = hourlyData.data;
+        console.log(hourlyData);
+        fiveMinutes(hourlyForecastData);
+    })
+    .catch(err => {
+	    console.error(err);
+    });
+}
+
+function fiveMinutes(data){
+    var laterTemperature = document.getElementById("5minLaterTemperature");
+    for (var index = 0; index < 59; index++) {
+        if (index % 5 == 0 && index != 0) {
+            console.log(index + "minLaterTime");
+            document.getElementById(index + "minLaterTemperature").innerText = data[index].temp;
+            document.getElementById(index + "minLaterTime").innerText = data[index].timestamp_local.substr(11,14);
+            //JSON object not included icon and description. Need to find another solution for it.
+            /* document.getElementById(index + "minLaterIcon").src = "icons/" + data[index].weather.icon + ".png";
+            document.getElementById(index + "minLaterIcon").alt = data[index].weather.description; */
+        }
+        oneHourTemperatures.push(temperatureData);
+    }
+    console.log(temperatureData);
+}
+
+/* ---------------------------------Menu button ------------------------------------------------ */
 var menuBtn = document.getElementById("menuButton");
 menuBtn.addEventListener("click", openSetting);
 function openSetting(){
